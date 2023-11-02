@@ -1,17 +1,17 @@
+import { Button, HStack } from '@chakra-ui/react'
 import { FILTERS_BUTTONS } from './consts'
 
 export const Filters = ({ filterSelected, onFilterChange }) => {
     return (
-        <ul className='filters'>
+        <HStack>
             {
                 Object.entries(FILTERS_BUTTONS).map(([key, { href, literal }]) => {
                     const isSelected = key === filterSelected
-                    const className = isSelected ? 'selected' : ''
+                    const className = isSelected ? 'teal' : 'gray'
                     return (
-                        <li key={key}>
+                        <Button key={key} colorScheme={className}>
                             <a
                                 href={href}
-                                className={className}
                                 onClick={(event) => {
                                     event.preventDefault()
                                     onFilterChange(key)
@@ -19,10 +19,10 @@ export const Filters = ({ filterSelected, onFilterChange }) => {
                             >
                                 {literal}
                             </a>
-                        </li>
+                        </Button>
                     )
                 })
             }
-        </ul>
+        </HStack>
     )
 }

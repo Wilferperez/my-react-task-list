@@ -1,9 +1,9 @@
 import { useState } from 'react'
-import './App.css'
 import { Header } from './Header'
 import { TaskList } from './TaskList'
 import { TASK_FILTERS } from './consts';
 import { Footer } from './Footer';
+import { Box, Center, HStack, Divider } from '@chakra-ui/react'
 
 const mockTasks = [
   {
@@ -66,21 +66,32 @@ function App() {
   }
 
   return (
-    <div className='todoapp'>
+    <Box>
       <Header onAddTask={handleAddTask} />
-      <TaskList
-        onRemovedTask={handleRemove}
-        onToggleCompletedTask={handleCompleted}
-        tasks={filterTasks}
-      />
-      <Footer
-        activeCount={activeCount}
-        completedCount={completedCount}
-        filterSelected={filterSelected}
-        handleFilterChange={handleFilterChange}
-        onClearCompleted={handleRemoveAllCompleted}
-      />
-    </div>
+      <Center>
+        <HStack>
+          <TaskList
+            onRemovedTask={handleRemove}
+            onToggleCompletedTask={handleCompleted}
+            tasks={filterTasks}
+          />
+        </HStack>
+      </Center>
+      <Center>
+        <HStack>
+          <Center height='100px'>
+            <Divider />
+          </Center>
+          <Footer
+            activeCount={activeCount}
+            completedCount={completedCount}
+            filterSelected={filterSelected}
+            handleFilterChange={handleFilterChange}
+            onClearCompleted={handleRemoveAllCompleted}
+          />
+        </HStack>
+      </Center>
+    </Box>
   )
 }
 

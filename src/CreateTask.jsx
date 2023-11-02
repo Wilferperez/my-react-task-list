@@ -1,4 +1,5 @@
 import { useState } from "react"
+import { Input } from '@chakra-ui/react'
 
 export const CreateTask = ({ saveTask }) => {
     const [inputValue, setInputValue] = useState('')
@@ -11,14 +12,14 @@ export const CreateTask = ({ saveTask }) => {
 
     return (
         <form onSubmit={handleSubmit}>
-            <input
-                className="new-todo"
+            <Input
+                // className="new-todo"
                 value={inputValue}
                 onChange={(event)=>{ setInputValue(event.target.value) }}
                 placeholder="Que quieres hacer?"
                 autoFocus
                 >
-            </input>
+            </Input>
         </form>
     )
 }

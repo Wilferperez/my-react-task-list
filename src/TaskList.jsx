@@ -1,12 +1,12 @@
+import { Divider, Center } from '@chakra-ui/react'
 import { Task } from './Task.jsx';
 
 export const TaskList = ({ tasks, onRemovedTask, onToggleCompletedTask }) => {
     return (
-        <ul className='todo-list'>
+        <div>
             {tasks.map(task => (
-                <li 
+                <li style={{ listStyleType: "none" }}
                     key={task.id}
-                    className={`${task.completed ? 'completed' : ''}`}
                 >
                     <Task
                         key={task.id}
@@ -16,8 +16,11 @@ export const TaskList = ({ tasks, onRemovedTask, onToggleCompletedTask }) => {
                         onToggleCompletedTask={onToggleCompletedTask}
                         onRemovedTask={onRemovedTask}
                     />
+                    <Center height='10px'>
+                        <Divider orientation='vertical' />
+                    </Center>
                 </li>
             ))}
-        </ul>
+        </div>
     )
 }

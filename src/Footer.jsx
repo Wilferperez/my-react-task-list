@@ -1,25 +1,26 @@
+import { Text, Button } from '@chakra-ui/react'
 import { Filters } from "./Filters";
 
 export const Footer = ({ activeCount = 0, completedCount, filterSelected, handleFilterChange, onClearCompleted }) => {
     return (
-        <footer className="footer">
-            <span className="todo-count">
-                <strong>{activeCount}</strong> tareas pendientes
-            </span>
+        <>
+            <Text fontWeight='bold'>{activeCount}</Text>
+            <Text>
+                tareas pendientes
+            </Text>
             <Filters 
                 filterSelected={filterSelected}
                 onFilterChange={handleFilterChange}
             />
             {
                 completedCount > 0 && (
-                    <button
-                        className="clear-completed"
+                    <Button
                         onClick={onClearCompleted}
                     >
                         Borrar completadas
-                    </button>
+                    </Button>
                 )
             }
-        </footer>
+        </>
     )
 }
